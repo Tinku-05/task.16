@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript DOM Tasks</title>
+  <style>
+    #text {
+      font-size: 16px;
+    }
+    #form-output {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      background: #f9f9f9;
+    }
+    .btn {
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>JavaScript DOM Tasks</h1>
+
+  <!-- Task 1: Basic Information Form -->
+  <h2>1. Basic Information Form</h2>
+  <form id="infoForm">
+    <label>Name: <input type="text" id="name"></label><br><br>
+    <label>Email: <input type="email" id="email"></label><br><br>
+    <label>Age: <input type="number" id="age"></label><br><br>
+    <button type="button" onclick="showFormData()">Submit</button>
+  </form>
+
+  <div id="form-output"></div>
+
+  <!-- Task 2: Change Image -->
+  <h2>2. Change Image</h2>
+  <img id="myImage" src="https://via.placeholder.com/150" width="150" alt="Placeholder Image"><br><br>
+  <button onclick="changeImage()">Change Image</button>
+
+  <!-- Task 3: Increase/Decrease Font Size -->
+  <h2>3. Adjust Font Size</h2>
+  <p id="text">This is a sample text. Click the buttons to change font size.</p>
+  <button class="btn" onclick="changeFontSize(1)">Increase Font Size</button>
+  <button class="btn" onclick="changeFontSize(-1)">Decrease Font Size</button>
+
+  <!-- Task 4: Show Current Date and Time -->
+  <h2>4. Show Current Date & Time</h2>
+  <button onclick="showDateTime()">Show Date & Time</button>
+  <p id="dateTimeOutput"></p>
+
+  <script>
+    // Task 1: Show Form Data
+    function showFormData() {
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const age = document.getElementById("age").value;
+
+      const output = `
+        <strong>Submitted Information:</strong><br>
+        Name: ${name}<br>
+        Email: ${email}<br>
+        Age: ${age}
+      `;
+      document.getElementById("form-output").innerHTML = output;
+    }
+
+    // Task 2: Change Image Source
+    function changeImage() {
+      document.getElementById("myImage").src = "https://via.placeholder.com/150/0000FF/FFFFFF?text=New+Image";
+    }
+
+    // Task 3: Change Font Size
+    let fontSize = 16;
+    function changeFontSize(change) {
+      fontSize += change;
+      if (fontSize < 10) fontSize = 10;
+      document.getElementById("text").style.fontSize = fontSize + "px";
+    }
+
+    // Task 4: Show Current Date and Time
+    function showDateTime() {
+      const now = new Date();
+      document.getElementById("dateTimeOutput").textContent = now.toString();
+    }
+  </script>
+
+</body>
+</html>
